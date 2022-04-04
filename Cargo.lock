@@ -68,10 +68,22 @@ version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d9703972c1d79af11e3d551df5a00f8cf605440465558127b4ec5ac31382d3bb"
 dependencies = [
- "camino",
- "log",
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "apollo-federation-types"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2e8c45dac8f245bf6b1ede3a9d194059b8e19efcb79b45cdf699ae8be413c72a"
+dependencies = [
+ "camino",
+ "log",
+ "semver",
+ "serde",
+ "serde_json",
+ "serde_with",
  "serde_yaml",
  "thiserror",
  "url",
@@ -392,7 +404,7 @@ dependencies = [
  "directories-next",
  "flate2",
  "reqwest",
- "serial_test 0.5.1",
+ "serial_test",
  "tar",
  "tempdir",
  "thiserror",
@@ -725,7 +737,7 @@ version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aaebeb52e38d53b890ebcb723ff23462f39353d4e73db48284591e6395a1c25e"
 dependencies = [
- "crossterm",
+ "crossterm 0.22.1",
 ]
 
 [[package]]
@@ -848,6 +860,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "crossterm"
+version = "0.23.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f1fd7173631a4e9e2ca8b32ae2fad58aab9843ea5aaf56642661937d87e28a3e"
+dependencies = [
+ "bitflags",
+ "crossterm_winapi",
+ "libc",
+ "mio 0.7.14",
+ "parking_lot 0.12.0",
+ "signal-hook",
+ "signal-hook-mio",
+ "winapi",
+]
+
+[[package]]
 name = "crossterm_winapi"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -933,6 +961,41 @@ dependencies = [
  "pkg-config",
  "vcpkg",
  "winapi",
+]
+
+[[package]]
+name = "darling"
+version = "0.13.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4e92cb285610dd935f60ee8b4d62dd1988bd12b7ea50579bd6a138201525318e"
+dependencies = [
+ "darling_core",
+ "darling_macro",
+]
+
+[[package]]
+name = "darling_core"
+version = "0.13.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c29e95ab498b18131ea460b2c0baa18cbf041231d122b0b7bfebef8c8e88989"
+dependencies = [
+ "fnv",
+ "ident_case",
+ "proc-macro2",
+ "quote",
+ "strsim 0.10.0",
+ "syn",
+]
+
+[[package]]
+name = "darling_macro"
+version = "0.13.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b21dd6b221dd547528bd6fb15f1a3b7ab03b9a06f76bff288a8c629bcfbe7f0e"
+dependencies = [
+ "darling_core",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -1500,16 +1563,16 @@ dependencies = [
 
 [[package]]
 name = "harmonizer"
-version = "0.35.3"
+version = "0.36.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79eda1d20d288d1fd13b6510a7c784c41950855f8f5b8e4568024999787a8230"
+checksum = "4913818e8c1a0647d29012bce284c6f2d92445235ff6f9c1d5bef824c13e11a3"
 dependencies = [
- "apollo-federation-types",
+ "apollo-federation-types 0.2.1",
  "deno_core",
  "semver",
  "serde",
  "serde_json",
- "toml_edit",
+ "toml_edit 0.13.4",
  "which",
 ]
 
@@ -1519,12 +1582,12 @@ version = "2.0.0-preview.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aa6e8ceb8dcdb4ffdac0d964d18693a113285f32b6713fe1f8e41cdb40ca7c87"
 dependencies = [
- "apollo-federation-types",
+ "apollo-federation-types 0.2.1",
  "deno_core",
  "semver",
  "serde",
  "serde_json",
- "toml_edit",
+ "toml_edit 0.13.4",
  "which",
 ]
 
@@ -1675,6 +1738,12 @@ dependencies = [
  "tokio",
  "tokio-native-tls",
 ]
+
+[[package]]
+name = "ident_case"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b9e0384b61958566e926dc50660321d12159025e767c18e043daf26b70104c39"
 
 [[package]]
 name = "idna"
@@ -2659,7 +2728,7 @@ version = "0.4.8"
 dependencies = [
  "ansi_term",
  "anyhow",
- "apollo-federation-types",
+ "apollo-federation-types 0.3.0",
  "assert-json-diff",
  "assert_cmd",
  "assert_fs",
@@ -2670,10 +2739,10 @@ dependencies = [
  "camino",
  "chrono",
  "console 0.15.0",
- "crossterm",
+ "crossterm 0.23.1",
  "git-url-parse",
  "git2",
- "harmonizer 0.35.3",
+ "harmonizer 0.36.0",
  "heck 0.4.0",
  "houston",
  "lazycell",
@@ -2687,7 +2756,7 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_yaml",
- "serial_test 0.6.0",
+ "serial_test",
  "sputnik",
  "strsim 0.10.0",
  "structopt",
@@ -2707,7 +2776,7 @@ name = "rover-client"
 version = "0.0.0"
 dependencies = [
  "apollo-encoder",
- "apollo-federation-types",
+ "apollo-federation-types 0.3.0",
  "backoff",
  "camino",
  "chrono",
@@ -2737,7 +2806,7 @@ name = "rover-fed2"
 version = "0.4.8"
 dependencies = [
  "anyhow",
- "apollo-federation-types",
+ "apollo-federation-types 0.3.0",
  "camino",
  "harmonizer 2.0.0-preview.7",
  "serde",
@@ -2914,6 +2983,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde_with"
+version = "1.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ec1e6ec4d8950e5b1e894eac0d360742f3b1407a6078a604a731c4b3f49cefbc"
+dependencies = [
+ "rustversion",
+ "serde",
+ "serde_with_macros",
+]
+
+[[package]]
+name = "serde_with_macros"
+version = "1.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "12e47be9471c72889ebafb5e14d5ff930d89ae7a67bbdb5f8abb564f845a927e"
+dependencies = [
+ "darling",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "serde_yaml"
 version = "0.8.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2927,35 +3019,13 @@ dependencies = [
 
 [[package]]
 name = "serial_test"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e0bccbcf40c8938196944a3da0e133e031a33f4d6b72db3bda3cc556e361905d"
-dependencies = [
- "lazy_static",
- "parking_lot 0.11.2",
- "serial_test_derive 0.5.1",
-]
-
-[[package]]
-name = "serial_test"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e5bcc41d18f7a1d50525d080fd3e953be87c4f9f1a974f3c21798ca00d54ec15"
 dependencies = [
  "lazy_static",
  "parking_lot 0.11.2",
- "serial_test_derive 0.6.0",
-]
-
-[[package]]
-name = "serial_test_derive"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b2acd6defeddb41eb60bb468f8825d0cfd0c2a76bc03bfd235b6a1dc4f6a1ad5"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
+ "serial_test_derive",
 ]
 
 [[package]]
@@ -3279,7 +3349,7 @@ checksum = "48c14caf224b3f3d43d93d0532098f9e4906bd79e0978a2e10951f17aab7898b"
 dependencies = [
  "coolor",
  "crossbeam",
- "crossterm",
+ "crossterm 0.22.1",
  "minimad",
  "thiserror",
  "unicode-width",
@@ -3467,6 +3537,17 @@ dependencies = [
  "indexmap",
  "itertools",
  "kstring",
+]
+
+[[package]]
+name = "toml_edit"
+version = "0.14.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "86e793cd7300306ebefde30a6282a9016899b7bad63799511253d95518a62bcd"
+dependencies = [
+ "combine 4.6.3",
+ "indexmap",
+ "itertools",
 ]
 
 [[package]]
@@ -3970,7 +4051,7 @@ dependencies = [
  "structopt",
  "tar",
  "tempfile",
- "toml_edit",
+ "toml_edit 0.14.2",
  "which",
  "zip",
 ]
@@ -3986,11 +4067,11 @@ dependencies = [
 
 [[package]]
 name = "zip"
-version = "0.5.13"
+version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "93ab48844d61251bb3835145c521d88aa4031d7139e8485990f60ca911fa0815"
+checksum = "bf225bcf73bb52cbb496e70475c7bd7a3f769df699c0020f6c7bd9a96dcf0b8d"
 dependencies = [
  "byteorder",
  "crc32fast",
- "thiserror",
+ "crossbeam-utils",
 ]
